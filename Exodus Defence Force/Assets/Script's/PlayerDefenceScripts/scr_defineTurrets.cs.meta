@@ -1,0 +1,24 @@
+fileFormatVersion: 2
+guid: 454c89e7a0f980d4cb00f952edfc3eed
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - aob: {fileID: 155850, guid: f1d1885599f19794f8e37090a74a8785, type: 2}
+  - bigBoy: {fileID: 177952, guid: 7f6f421b1a099dd4e927b6dd114d0227, type: 2}
+  - bob: {fileID: 160906, guid: 855e838c7bf25164eb73a1047dce15d5, type: 2}
+  - buzz: {fileID: 150136, guid: 737f67b2bb6bacb4dac26c28d3125999, type: 2}
+  - drill: {fileID: 188540, guid: 209436a47a218be49952e180c77e4cdc, type: 2}
+  - fatMan: {fileID: 125630, guid: deb109968a20ee04eb63b17c411ea687, type: 2}
+  - kolokol13: {fileID: 199788, guid: 3689c864e50f0d640a1d0a75566f11ed, type: 2}
+  - lnl: {fileID: 123550, guid: 33f8aced7f01005479ab5426a643fe0d, type: 2}
+  - loadLifter: {fileID: 161638, guid: 25d4e55c650ffce40b33bd6cbfa2ea5c, type: 2}
+  - mine: {fileID: 155524, guid: c8adca0d00caefd438b3f0ad51bb1b8d, type: 2}
+  - mk48: {fileID: 125854, guid: 656353e627f9b724ba47669c68723158, type: 2}
+  - neon: {fileID: 121376, guid: 62ce5e82d887f2e4893440b22df6edeb, type: 2}
+  - ray: {fileID: 185464, guid: a7b9d5134cc4bab4e864f60137b77667, type: 2}
+  - scatterBox: {fileID: 153528, guid: e53ac5da878e81d4687f19f3e6ccffa0, type: 2}
+  - teslaCoil: {fileID: 161350, guid: f4c5a63a1b33916479670691406b126c, type: 2}
+  - toasty: {fileID: 134936, guid: 0153697b9ecbe0745b314ff0226a6a4c, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 

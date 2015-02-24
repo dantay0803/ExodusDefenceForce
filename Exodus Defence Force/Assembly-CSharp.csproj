@@ -46,11 +46,17 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Script&apos;s\Enemy Object Only Scripts\scr_enemyMovement.cs" />
-     <Compile Include="Assets\Script&apos;s\Enemy Object Only Scripts\scr_enemySelectRandomYStartPos.cs" />
+     <Compile Include="Assets\Script&apos;s\CameraScripts\scr_moveCamera.cs" />
+     <Compile Include="Assets\Script&apos;s\CameraScripts\scr_moveCameraHandler.cs" />
+     <Compile Include="Assets\Script&apos;s\EnemyScripts\scr_enemyMovement.cs" />
+     <Compile Include="Assets\Script&apos;s\EnemyScripts\scr_enemySelectRandomYStartPos.cs" />
+     <Compile Include="Assets\Script&apos;s\PlayerDefenceScripts\scr_defineTurrets.cs" />
+     <Compile Include="Assets\Script&apos;s\PlayerDefenceScripts\scr_placeTurrets.cs" />
      <Compile Include="Assets\Script&apos;s\scr_checkObjectsHealth.cs" />
-     <Compile Include="Assets\scr_moveCamera.cs" />
-     <Compile Include="Assets\scr_moveCameraHandler.cs" />
+     <Compile Include="Assets\Script&apos;s\scr_setImageDirection.cs" />
+     <Compile Include="Assets\scr_attackEnemy.cs" />
+     <Compile Include="Assets\scr_moveProjectile.cs" />
+     <Compile Include="Assets\scr_selectBob.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.2/UnityEngine.UI.dll</HintPath>
  </Reference>
