@@ -1,30 +1,37 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class scr_moveCamera : MonoBehaviour{
+public class scr_moveCamera : MonoBehaviour {
 
-    //Set what object the camera will follow
-    public Transform myTarget;
+    //Get mouse pressed position
+    float mousePressedPosition = 0;
+    float mouseReleasedPosition = 0;
 
-    // Update is called once per frame
-    void Update(){
-        //Move camera to same position as camera handler
+    void OnMouseDown()
+    {
+        mousePressedPosition = Input.mousePosition.x;
+    }
+
+    void OnMouseUp()
+    {
+        mouseReleasedPosition = Input.mousePosition.x;
         moveCamera();
     }
 
-    //Move camera to same position as camera handler
-    void moveCamera(){
-        //Check to make sure myTarget has been given an object value for the camera to follow
-        if (myTarget != null){
-            //Create a new vector in order to update camera position
-            Vector3 targPos = myTarget.position;
 
-            /*Set the target Z position of the camera to the cameras current Z position to stop it
-            from matching the object you want to follows Z position which will stop you from seeing any objects on screen potentially*/
-            targPos.z = transform.position.z;
+    void moveCamera()
+    {
+        Vector3 camPos = Camera.main.transform.position;
 
-            //Set the cameras X and Y values to match the object you are following X and Y values
-            transform.position = targPos;
+        if(mousePressedPosition > mouseReleasedPosition){
+            //Move camera to right grid
+          
+            camPos.x = 20.5f;
         }
+        else if(mouseReleasedPosition > mousePressedPosition){
+            //move camera to left grid
+            camPos.x = 5.5f;
+        }
+        Camera.main.transform.position = camPos;
     }
 }

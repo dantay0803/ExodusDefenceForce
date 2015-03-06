@@ -17,21 +17,19 @@ public class scr_enemySelectRandomYStartPos : MonoBehaviour {
         //Hold a random value to determin objects random X position
         int xPos = Random.Range(0, 2);
         //Use a new Vector to get the objects current position to be able to change the position of the object
-        Vector3 objectPosition = transform.position;
-
+        Vector3 objectPosition = this.transform.position;
         //ChooseRandomXStartPos
-        switch (xPos)
-        {
+        switch (xPos){
             //Place the object on the left grid
             case 0:
-                objectPosition.x = -1;
+                objectPosition.x = -2.5f;
                 break;
             //Place the object on the right grid
             case 1:
-                objectPosition.x = 27;
+                objectPosition.x = 28.5f;
                 break;
             default:
-                objectPosition.x = -1;
+                objectPosition.x = -2.5f;
                 break;
         }
         //Update the objects position by setting it to the randomly generated positions
@@ -43,8 +41,7 @@ public class scr_enemySelectRandomYStartPos : MonoBehaviour {
         //Hold a random value to determin objects random Y position
         int yPos = Random.Range(0, 5);
         //Use a new Vector to get the objects current position to be able to change the position of the object
-        Vector3 objectPosition = transform.position;
-
+        Vector3 objectPosition = this.transform.position;
         //ChooseRandomYStartPos
         switch (yPos){
             //Y=352
@@ -73,6 +70,6 @@ public class scr_enemySelectRandomYStartPos : MonoBehaviour {
                 break;
         }
         //Update the objects position by setting it to the randomly generated positions
-        transform.position = objectPosition;    
+        this.transform.position = objectPosition;    
     }
 }
