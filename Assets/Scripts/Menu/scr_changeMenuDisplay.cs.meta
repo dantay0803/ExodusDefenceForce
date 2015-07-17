@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: c15b4d053fb28a14e83064d96d8020e7
+timeCreated: 1436631506
+licenseType: Free
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - bg_mainMenu: {fileID: 154206, guid: 221ef7eded2575147a63b9ba58848f31, type: 2}
+  - obj_startButton: {fileID: 128790, guid: 7b8e84baac9c1d8468e5fc91bf4ea703, type: 2}
+  - obj_toggleSFX: {fileID: 131766, guid: 7b8e84baac9c1d8468e5fc91bf4ea703, type: 2}
+  - obj_toggleMusic: {fileID: 101864, guid: 7b8e84baac9c1d8468e5fc91bf4ea703, type: 2}
+  - obj_rateButton: {fileID: 106044, guid: 7b8e84baac9c1d8468e5fc91bf4ea703, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
