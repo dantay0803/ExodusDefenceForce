@@ -18,11 +18,13 @@ public class scr_soundManager : MonoBehaviour {
             instance = this;
         }
         //IfSoundManagerInstanceAlreadyExistsDestroyIt
-        else if(instance != null){
+        /*else if(instance != null || Application.loadedLevelName == "scene_mainMenu" || Application.loadedLevelName == "scene_defenceSelection"){
             Destroy(this.gameObject);
         }
         //StopTheSoundManagerBeingDestroyedOnLoadBetweenScenes
-        DontDestroyOnLoad(gameObject);
+        if(Application.loadedLevelName == "scene_mainMenu" || Application.loadedLevelName == "scene_defenceSelection") {
+            DontDestroyOnLoad(gameObject);
+        }*/
         playMusic();
     }
 	

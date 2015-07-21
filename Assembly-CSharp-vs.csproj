@@ -46,8 +46,14 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\DefenceObjects\scr_generateOil.cs" />
+     <Compile Include="Assets\Scripts\CameraScripts\scr_checkForSwipe.cs" />
+     <Compile Include="Assets\Scripts\CameraScripts\scr_generateOil.cs" />
+     <Compile Include="Assets\Scripts\DefenceObjects\scr_moveCamera.cs" />
+     <Compile Include="Assets\Scripts\DefenceObjects\scr_moveProjectiles.cs" />
+     <Compile Include="Assets\Scripts\DefenceObjects\scr_setExplosionAnimation.cs" />
+     <Compile Include="Assets\Scripts\DefenceObjects\scr_stopTurretShootingAnimation.cs" />
      <Compile Include="Assets\Scripts\DefenceObjects\scr_turretDamage.cs" />
+     <Compile Include="Assets\Scripts\DefenceObjects\scr_turretShoot.cs" />
      <Compile Include="Assets\Scripts\EnemyScripts\scr_chooseRandomPosition.cs" />
      <Compile Include="Assets\Scripts\EnemyScripts\scr_enemyMovement.cs" />
      <Compile Include="Assets\Scripts\EnemyScripts\scr_projectileCollision.cs" />
@@ -59,17 +65,14 @@
      <Compile Include="Assets\Scripts\PauseMenu\scr_pauseGame.cs" />
      <Compile Include="Assets\Scripts\PauseMenu\scr_toggleAudio.cs" />
      <Compile Include="Assets\Scripts\WinLoss\scr_shareScore.cs" />
-     <Compile Include="Assets\Scripts\scr_checkForSwipe.cs" />
+     <Compile Include="Assets\Scripts\scr_destroyObject.cs" />
      <Compile Include="Assets\Scripts\scr_displayScore.cs" />
      <Compile Include="Assets\Scripts\scr_levelSpawns.cs" />
      <Compile Include="Assets\Scripts\scr_loadOutSelection.cs" />
-     <Compile Include="Assets\Scripts\scr_moveCamera.cs" />
      <Compile Include="Assets\Scripts\scr_placeDefenceObjects.cs" />
      <Compile Include="Assets\Scripts\scr_removeBlastRadius.cs" />
      <Compile Include="Assets\Scripts\scr_selectDefenceObject.cs" />
      <Compile Include="Assets\Scripts\scr_soundManager.cs" />
-     <Compile Include="Assets\scr_moveProjectiles.cs" />
-     <Compile Include="Assets\scr_turretShoot.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

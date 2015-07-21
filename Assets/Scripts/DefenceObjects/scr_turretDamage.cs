@@ -23,9 +23,15 @@ public class scr_turretDamage : MonoBehaviour {
     int selectedEnemyDamage = 0;
     //KeepTrackOfTheDamageSpeedOfTheEnemyInfrontOfTheTurret
     int selectedEnemyTimer = 0;
+    //CreateAnAnimatorToChangeTheObjectsAnimation
+    Animator anim;
 
+    //Run at start
     void Start(){
+        //FlipTheObjectImageDependantOnWhatGridItIsOn
         flipImage();
+        //GetTheAnimatorControllerComponentForTheObject
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -35,10 +41,8 @@ public class scr_turretDamage : MonoBehaviour {
     }
 
     //FlipTheImageIfItSpawnsOnTheLeftGrid
-    void flipImage()
-    {
-        if (this.transform.position.x < 7)
-        {
+    void flipImage(){
+        if (this.transform.position.x < 7){
             //GetTheCurretRotationvaluesOfTheObject
             Vector3 imageScale = transform.localScale;
             //FlipTheImageOnItsYAxis
@@ -146,10 +150,11 @@ public class scr_turretDamage : MonoBehaviour {
         }
     }
 
-    //DeleteTheObjectInstanceWhenHealthIs0OrBelow
+    //PlayTheDeathAnimationWhenHealthIs0OrBelow
     void checkHealth(){
         if(defenceObjectsHealth <= 0){
-            Destroy(this.gameObject);
+            //SetTheAnimatorToPlayTheDieAnimation
+            anim.SetInteger("turretState", 2);
         }
     }
 

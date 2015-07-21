@@ -13,9 +13,7 @@ public class scr_exit : MonoBehaviour {
                 Application.Quit();
             }
             //CheckIfTheUserIsOnAWebBrowserToGoToTheMainMenuAsQuiteFeatureNotSupport
-            else if(Application.platform == RuntimePlatform.WindowsWebPlayer || Application.platform == RuntimePlatform.OSXWebPlayer || Application.platform == RuntimePlatform.WebGLPlayer 
-                || Application.platform == RuntimePlatform.WindowsEditor)
-            {
+            else{
                 Application.LoadLevel("scene_mainMenu");
             }
         }

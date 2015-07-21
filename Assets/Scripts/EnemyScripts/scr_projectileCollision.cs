@@ -29,7 +29,8 @@ public class scr_projectileCollision : MonoBehaviour {
     bool kolokoloMovementSpeedSaved = false, kolokoloEffectRunning = false;
     //DefineTheBlastRadiusObjectsToBeSpawned
     public GameObject obj_fatManBlastRadius, obj_bigBoyBlastRadius, obj_mk48BlastRadius;
-
+    //DefineTheAnimatorComponentForTheDefenceObjectsAndEnemyObjects
+    Animator defenceAnim, enemyAnim;
 
     //Run every frame
     void Update(){
@@ -126,17 +127,26 @@ public class scr_projectileCollision : MonoBehaviour {
 
     //CheckForCollisionWithWreackingBallAndInstantlyDestroyTheTurret
     void OnTriggerEnter2D(Collider2D coll){
-        projectileObjectName = coll.name;
-        applyDamage();
-        if(coll.gameObject.name != "bg_levelOne") {
+        if(coll.gameObject.name != "bg_levelOne" && coll.name != "obj_bigBoy(Clone)" && coll.name != "obj_mine(Clone)" && coll.name != "obj_fireMine(Clone)" && coll.name != "obj_kolokolo(Clone)") {
             Destroy(coll.gameObject);
         }
+        if(coll.name == "obj_bigBoy(Clone)" || coll.name == "obj_mine(Clone)" || coll.name == "obj_fireMine(Clone)" || coll.name == "obj_kolokolo(Clone)"){
+            //GetTheAnimatorComponentOfTheMines
+            defenceAnim = coll.GetComponent<Animator>();
+            //PlayExplosionAnimation
+            defenceAnim.SetInteger("turretState", 2);
+        }
+        projectileObjectName = coll.name;
+        applyDamage();
     }
 
-    //DeleteTheObjectInstanceWhenHealthIs0OrBelow
+    //PlayDeathAnimation
     void checkHealth(){
+        //GetTheAnimatorComponentOfTheEnemy
+        enemyAnim = this.GetComponent<Animator>();
         if (objectsHealth <= 0){
-            Destroy(this.gameObject);
+            //SetToPlayDieAnimation
+            enemyAnim.SetInteger("enemyState", 2);
         }
     }
 
@@ -231,11 +241,17 @@ public class scr_projectileCollision : MonoBehaviour {
     //SpawnInstancesOfTheFatManBlastRadius
     void spawnFatManBlastRadius(){
         //SetTheFirstSpawnPointForTheBlastRadius
-        float xPos = 6.5f;
+        float xPos = 0;
+        if (this.transform.position.x < 7){
+            xPos = -7.5f;
+        }
+        else if (this.transform.position.x > 7){
+            xPos = 12.8f;
+        }
         //CreateAnInstanceOfTheFatManBlastRadiusOnEverySpaceAlongYAxisWhereTheCollisionOccured
         for(int i=0; i<9; i++){
             Instantiate(obj_fatManBlastRadius, new Vector3(xPos, this.transform.position.y, this.transform.position.z), Quaternion.identity);
-            xPos++;
+            xPos += 1.1f;
         }
     }
 
@@ -244,18 +260,38 @@ public class scr_projectileCollision : MonoBehaviour {
         //SpawnOnInstanceOfTheBlastRadiuesOnTheCollisionPosition
         Instantiate(obj_bigBoyBlastRadius, new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z), Quaternion.identity);
         //CheckIfThereIsASpacesAtEitherSideOfTheCollisionAndSpawnAnInstanceOfTheBlastRadiusIfThereIs
-        if (this.transform.position.y != -0.5){
-            Instantiate(obj_bigBoyBlastRadius, new Vector3(this.transform.position.x, this.transform.position.y + 1, this.transform.position.z), Quaternion.identity);
+        //LeftGridSpawns
+        if (this.transform.position.x < 7) {
+            if (this.transform.position.y != -0.5) {
+                Instantiate(obj_bigBoyBlastRadius, new Vector3(this.transform.position.x, this.transform.position.y + 1, this.transform.position.z), Quaternion.identity);
+            }
+            if (this.transform.position.y != -4.5) {
+                Instantiate(obj_bigBoyBlastRadius, new Vector3(this.transform.position.x, this.transform.position.y - 1, this.transform.position.z), Quaternion.identity);
+            }
+            if (this.transform.position.x > -7.5) {
+                Instantiate(obj_bigBoyBlastRadius, new Vector3(this.transform.position.x + 1, this.transform.position.y, this.transform.position.z), Quaternion.identity);
+            }
+            if (this.transform.position.x < 1){
+                Instantiate(obj_bigBoyBlastRadius, new Vector3(this.transform.position.x - 1, this.transform.position.y, this.transform.position.z), Quaternion.identity);
+            }
         }
-        if (this.transform.position.y != -4.5){
-            Instantiate(obj_bigBoyBlastRadius, new Vector3(this.transform.position.x, this.transform.position.y - 1, this.transform.position.z), Quaternion.identity);
-        }
-        if(this.transform.position.x != -6.5){
-            Instantiate(obj_bigBoyBlastRadius, new Vector3(this.transform.position.x + 1, this.transform.position.y, this.transform.position.z), Quaternion.identity);
-        }
-        if (this.transform.position.x != 1.5)
-        {
-            Instantiate(obj_bigBoyBlastRadius, new Vector3(this.transform.position.x - 1, this.transform.position.y, this.transform.position.z), Quaternion.identity);
+        else if(this.transform.position.x > 7){
+            if (this.transform.position.y != -0.5)
+            {
+                Instantiate(obj_bigBoyBlastRadius, new Vector3(this.transform.position.x, this.transform.position.y + 1, this.transform.position.z), Quaternion.identity);
+            }
+            if (this.transform.position.y != -4.5)
+            {
+                Instantiate(obj_bigBoyBlastRadius, new Vector3(this.transform.position.x, this.transform.position.y - 1, this.transform.position.z), Quaternion.identity);
+            }
+            if (this.transform.position.x >= 14)
+            {
+                Instantiate(obj_bigBoyBlastRadius, new Vector3(this.transform.position.x + 1, this.transform.position.y, this.transform.position.z), Quaternion.identity);
+            }
+            if (this.transform.position.x <= 20.5)
+            {
+                Instantiate(obj_bigBoyBlastRadius, new Vector3(this.transform.position.x - 1, this.transform.position.y, this.transform.position.z), Quaternion.identity);
+            }
         }
 
 

@@ -13,6 +13,10 @@ public class scr_placeDefenceObjects : MonoBehaviour {
     int drillCost = 50, teslaCost = 50, bobCost  = 100, buzzCost = 125, scatterBoxCost  = 150, aobCost = 150, neonCost = 175;
     int mk48Cost = 200, rayCost = 250, fatManCost = 500, kolokoloCost = 50, mineCost = 75, fireMineCost = 75, bigBoyCost = 200;
     int lnlCost = 100, toastyCost = 150, loadLifterCost = 175;
+    //SetTheCoolDownDelayValuesForPlacingDefences
+    float aobCoolDownTimer, bigBoyCoolDownTimer, bobCoolDownTimer, buzzCoolDownTimer, drillCoolDownTimer, fatManCoolDownTimer;
+    float kolokoloCoolDownTimer, lnlCoolDownTimer, loadLifterCoolDownTimer, mineCoolDownTimer, mk48CoolDownTimer, neonCoolDownTimer;
+    float rayCoolDownTimer, scatterBoxCoolDownTimer, teslaCoilCoolDownTimer, toastyCoolDownTimer, fireMineCoolDownTimer;
     //CheckWhatDefenceObjectHasBeenSelected
     bool drillSelected = false;
     bool teslaSelected, bobSelected, buzzSelected, scatterBoxSelected, aobSelected, neonSelected = false;
@@ -20,23 +24,7 @@ public class scr_placeDefenceObjects : MonoBehaviour {
     bool kolokoloSelected, mineSelected, fireMineSelected, bigBoySelected = false;
     bool lnlSelected, toastySelected, loadlifterSelected = false;
     //DefineDefenceObjects
-    public GameObject drill;
-    public GameObject tesla;
-    public GameObject bob;
-    public GameObject buzz;
-    public GameObject scatterBox;
-    public GameObject aob;
-    public GameObject neon;
-    public GameObject mk48;
-    public GameObject ray;
-    public GameObject fatMan;
-    public GameObject kolokolo;
-    public GameObject mine;
-    public GameObject fireMine;
-    public GameObject bigBoy;
-    public GameObject lnl;
-    public GameObject toasty;
-    public GameObject loadLifter;
+    public GameObject drill, tesla, bob, buzz, scatterBox, aob, neon, mk48, ray, fatMan, kolokolo, mine, fireMine, bigBoy, lnl, toasty, loadLifter;
 
     // Use this for initialization
     void Awake(){
@@ -48,8 +36,67 @@ public class scr_placeDefenceObjects : MonoBehaviour {
         else if(instance != null){
             Destroy(gameObject);
         }
-        //UpdateTheScoreDisplay
-        scr_displayScore.instance.displayOil(oil);
+    }
+
+    // Update is called once per frame
+    void Update(){
+        //ReduceDefenceCoolDOwnTimersIfAnyAreOver0
+        countDownCoolDownTimers();
+    }
+
+    //ReduceDefenceCoolDOwnTimersIfAnyAreOver0
+    void countDownCoolDownTimers(){
+        if (aobCoolDownTimer > 0){
+            aobCoolDownTimer -= Time.deltaTime;
+        }
+        if (bigBoyCoolDownTimer > 0){
+            bigBoyCoolDownTimer -= Time.deltaTime;
+        }
+        if (bobCoolDownTimer > 0){
+            bobCoolDownTimer -= Time.deltaTime;
+        }
+        if (buzzCoolDownTimer > 0){
+            buzzCoolDownTimer -= Time.deltaTime;
+        }
+        if (drillCoolDownTimer > 0){
+            drillCoolDownTimer -= Time.deltaTime;
+        }
+        if (fatManCoolDownTimer > 0){
+            fatManCoolDownTimer -= Time.deltaTime;
+        }
+        if (kolokoloCoolDownTimer > 0){
+            kolokoloCoolDownTimer -= Time.deltaTime;
+        }
+        if (lnlCoolDownTimer > 0){
+            lnlCoolDownTimer -= Time.deltaTime;
+        }
+        if (loadLifterCoolDownTimer > 0){
+            loadLifterCoolDownTimer -= Time.deltaTime;
+        }
+        if (mineCoolDownTimer > 0){
+            mineCoolDownTimer -= Time.deltaTime;
+        }
+        if (mk48CoolDownTimer > 0){
+            mk48CoolDownTimer -= Time.deltaTime;
+        }
+        if (neonCoolDownTimer > 0){
+            neonCoolDownTimer -= Time.deltaTime;
+        }
+        if (rayCoolDownTimer > 0){
+            rayCoolDownTimer -= Time.deltaTime;
+        }
+        if (scatterBoxCoolDownTimer > 0){
+            scatterBoxCoolDownTimer -= Time.deltaTime;
+        }
+        if (teslaCoilCoolDownTimer > 0){
+            teslaCoilCoolDownTimer -= Time.deltaTime;
+        }
+        if (toastyCoolDownTimer > 0){
+            toastyCoolDownTimer -= Time.deltaTime;
+        }
+        if (fireMineCoolDownTimer > 0){
+            fireMineCoolDownTimer -= Time.deltaTime;
+        }
     }
 
     //CheckWhatSelectionCardWasClickedOn
@@ -57,57 +104,61 @@ public class scr_placeDefenceObjects : MonoBehaviour {
         //ResetWhatObjectHasBeenSelectedIncaseAnotherCardHasBeenSelectedAfterOneWasAlreadySelected
         resetSelectedDefenceObject();
         //SetABooleanToTrueToSpawnInTheObjectThatReleatesToTheSelectionCardClickOn
-        //CheckIfTheDrillSelectionCardWasClickedAndTheirIsEnoughOilToBuildItInOrderToAllowTheUserToSpawnIt
-        if (defenceName == "obj_drillSelection" && oil >= drillCost){
+        //CheckIfTheDrillSelectionCardWasClicked&&ThereIsEnoughOil&&TheCoolDownTimerIsLessThan0
+        if (defenceName == "obj_drillSelection" && oil >= drillCost && drillCoolDownTimer <= 0){
             drillSelected = true;
         }
-        if(defenceName == "obj_teslaSelection(Clone)" && oil >= teslaCost){
+        else if (defenceName == "obj_teslaSelection(Clone)" && oil >= teslaCost && teslaCoilCoolDownTimer <=0){
             teslaSelected = true;
         }
-        if(defenceName == "obj_bobSelection(Clone)" && oil >= bobCost){
+        else if (defenceName == "obj_bobSelection(Clone)" && oil >= bobCost && bobCoolDownTimer <= 0){
             bobSelected = true;
         }
-        if(defenceName == "obj_buzzSelection(Clone)" && oil >= buzzCost){
+        else if (defenceName == "obj_buzzSelection(Clone)" && oil >= buzzCost && buzzCoolDownTimer <= 0){
             buzzSelected = true;
         }
-        if(defenceName == "obj_scatterBoxSelection(Clone)" && oil >= scatterBoxCost){
+        else if (defenceName == "obj_scatterBoxSelection(Clone)" && oil >= scatterBoxCost && scatterBoxCoolDownTimer <= 0){
             scatterBoxSelected = true;
         }
-        if(defenceName == "obj_aobSelection(Clone)" && oil >= aobCost){
+        else if (defenceName == "obj_aobSelection(Clone)" && oil >= aobCost && aobCoolDownTimer <= 0){
             aobSelected = true;
         }
-        if(defenceName == "obj_neonSelection(Clone)" && oil >= neonCost){
+        else if (defenceName == "obj_neonSelection(Clone)" && oil >= neonCost && neonCoolDownTimer <= 0){
             neonSelected = true;
         }
-        if(defenceName == "obj_mk48Selection(Clone)" && oil >= mk48Cost){
+        else if (defenceName == "obj_mk48Selection(Clone)" && oil >= mk48Cost && mk48CoolDownTimer <= 0){
             mk48Selected = true;
         }
-        if (defenceName == "obj_raySelection(Clone)" && oil >= rayCost){
+        else if (defenceName == "obj_raySelection(Clone)" && oil >= rayCost && rayCoolDownTimer <= 0){
             raySelected = true;
         }
-        if (defenceName == "obj_fatManSelection(Clone)" && oil >= fatManCost){
+        else if (defenceName == "obj_fatManSelection(Clone)" && oil >= fatManCost && fatManCoolDownTimer <= 0){
             fatManSelected = true;
         }
-        if (defenceName == "obj_kolokoloSelection(Clone)" && oil >= kolokoloCost){
+        else if (defenceName == "obj_kolokoloSelection(Clone)" && oil >= kolokoloCost && kolokoloCoolDownTimer <= 0){
             kolokoloSelected = true;
         }
-        if (defenceName == "obj_mineSelection(Clone)" && oil >= mineCost){
+        else if (defenceName == "obj_mineSelection(Clone)" && oil >= mineCost && mineCoolDownTimer <= 0){
             mineSelected = true;
         }
-        if (defenceName == "obj_fireMineSelection(Clone)" && oil >= fireMineCost){
+        else if (defenceName == "obj_fireMineSelection(Clone)" && oil >= fireMineCost && fireMineCoolDownTimer <= 0){
             fireMineSelected = true;
         }
-        if (defenceName == "obj_bigBoySelection(Clone)" && oil >= bigBoyCost){
+        else if (defenceName == "obj_bigBoySelection(Clone)" && oil >= bigBoyCost && bigBoyCoolDownTimer <= 0){
             bigBoySelected = true;
         }
-        if (defenceName == "obj_lnlSelection(Clone)" && oil >= lnlCost){
+        else if (defenceName == "obj_lnlSelection(Clone)" && oil >= lnlCost && lnlCoolDownTimer <= 0){
             lnlSelected = true;
         }
-        if (defenceName == "obj_toastySelection(Clone)" && oil >= toastyCost){
+        else if (defenceName == "obj_toastySelection(Clone)" && oil >= toastyCost && toastyCoolDownTimer <= 0){
             toastySelected = true;
         }
-        if (defenceName == "obj_loadLifterSelection(Clone)" && oil >= loadLifterCost){
+        else if (defenceName == "obj_loadLifterSelection(Clone)" && oil >= loadLifterCost && loadLifterCoolDownTimer <= 0){
             loadlifterSelected = true;
+        }
+        else{
+            //ResetTheBooleansToCreateTheDefenceObjectsOnceOneHasBeenPlaced
+            resetSelectedDefenceObject();
         }
     }
 
@@ -117,70 +168,87 @@ public class scr_placeDefenceObjects : MonoBehaviour {
         if(drillSelected){
             Instantiate(drill, new Vector3(xPos, yPos, zPos), Quaternion.identity);
             oil -= drillCost;
+            drillCoolDownTimer = 3;
         }
         if(teslaSelected){
             Instantiate(tesla, new Vector3(xPos, yPos, zPos), Quaternion.identity);
             oil -= teslaCost;
+            teslaCoilCoolDownTimer = 3;
         }
         if(bobSelected){
             Instantiate(bob, new Vector3(xPos, yPos, zPos), Quaternion.identity);
             oil -= bobCost;
+            bobCoolDownTimer = 4;
         }
         if(buzzSelected){
             Instantiate(buzz, new Vector3(xPos, yPos, zPos), Quaternion.identity);
             oil -= buzzCost;
+            buzzCoolDownTimer = 5;
         }
         if(scatterBoxSelected){
             Instantiate(scatterBox, new Vector3(xPos, yPos, zPos), Quaternion.identity);
             oil -= scatterBoxCost;
+            scatterBoxCoolDownTimer = 6;
         }
         if(aobSelected){
             Instantiate(aob, new Vector3(xPos, yPos, zPos), Quaternion.identity);
             oil -= aobCost;
+            aobCoolDownTimer = 6;
         }
         if(neonSelected){
             Instantiate(neon, new Vector3(xPos, yPos, zPos), Quaternion.identity);
             oil -= neonCost;
+            neonCoolDownTimer = 8;
         }
         if(mk48Selected){
             Instantiate(mk48, new Vector3(xPos, yPos, zPos), Quaternion.identity);
             oil -= mk48Cost;
+            mk48CoolDownTimer = 10;
         }
         if(raySelected){
             Instantiate(ray, new Vector3(xPos, yPos, zPos), Quaternion.identity);
             oil -= rayCost;
+            rayCoolDownTimer = 15;
         }
         if(fatManSelected){
             Instantiate(fatMan, new Vector3(xPos, yPos, zPos), Quaternion.identity);
             oil -= fatManCost;
+            fatManCoolDownTimer = 20;
         }
         if(kolokoloSelected){
             Instantiate(kolokolo, new Vector3(xPos, yPos, zPos), Quaternion.identity);
             oil -= kolokoloCost;
+            kolokoloCoolDownTimer = 3;
         }
         if(mineSelected){
             Instantiate(mine, new Vector3(xPos, yPos, zPos), Quaternion.identity);
             oil -= mineCost;
+            mineCoolDownTimer = 18;
         }
         if(fireMineSelected){
             Instantiate(fireMine, new Vector3(xPos, yPos, zPos), Quaternion.identity);
             oil -= fireMineCost;
+            fireMineCoolDownTimer = 20;
         }
         if(bigBoySelected){
             Instantiate(bigBoy, new Vector3(xPos, yPos, zPos), Quaternion.identity);
             oil -= bigBoyCost;
+            bigBoyCoolDownTimer = 10;
         }
         if(lnlSelected){
             Instantiate(lnl, new Vector3(xPos, yPos, zPos), Quaternion.identity);
             oil -= lnlCost;
+            lnlCoolDownTimer = 4;
         }
         if(toastySelected){
             Instantiate(toasty, new Vector3(xPos, yPos, zPos), Quaternion.identity);
             oil -= toastyCost;
+            toastyCoolDownTimer = 6;
         }
         if(loadlifterSelected){
             Instantiate(loadLifter, new Vector3(xPos, yPos, zPos), Quaternion.identity);
             oil -= loadLifterCost;
+            loadLifterCoolDownTimer = 8;
         }
         //ResetTheBooleansToCreateTheDefenceObjectsOnceOneHasBeenPlaced
         resetSelectedDefenceObject();
